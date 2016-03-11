@@ -71,9 +71,10 @@ public class PlaneEnemy extends GameObject implements Observer{//day la tai cua 
 
     @Override
     public void update(String msg) {
-        if(msg.equals("Bo Vua An Duoc Qua")){
+        if(msg.equals("Toi la PlaneMoveByMouse vua an duoc qua")){
             //tao tu huy
-            System.out.println("Thang Player Vua An Duoc Qua Roi");
+            PlaneEnemyManager.getInstance().getVectorPlaneEnemy().removeAllElements();
+            System.out.println("PlaneMoveByMouse vua an duoc qua roi");
         }
     }
 }

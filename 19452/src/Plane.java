@@ -205,7 +205,7 @@ public class Plane extends GameObject implements Subject{
 
         if(ManagerGift.getInstance().getGift().checkCollision()){
             for(Observer ob : vecTai){
-                ob.update("Bo Vua An Duoc Qua");
+                ob.update("Toi la PlaneMoveByMouse vua an duoc qua");
             }
         }
     }

@@ -40,7 +40,10 @@ public class GameWindow extends Frame implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         initPlane();
+
+
         //bat su kien di chuyen chuot
         //this.addMouseListener();
         //doan code de bat su kien bam phim
@@ -140,6 +143,9 @@ public class GameWindow extends Frame implements Runnable {
 //        Plane planeMoveByMouse = new Plane();
 
     }
+
+
+
     //ham ve
     //ve~ moi. thu o day
     @Override
@@ -166,7 +172,7 @@ public class GameWindow extends Frame implements Runnable {
         for(PlaneEnemy planeEnemy : vectorPlaneEnemy){
             planeEnemy.draw(g);
         }
-        //g.drawLine(0,0, 100, 100);
+
     }
     //Game Loop
     //Vong Lap game

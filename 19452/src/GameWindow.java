@@ -131,6 +131,9 @@ public class GameWindow extends Frame implements Runnable {
         for(PlaneEnemy planeEnemy:vectorPlaneEnemy){
             PlaneManager.getInstance().getPlaneMoveByKey().addObserver(planeEnemy);
         }
+
+       // BloodManager.getInstance().getBlood();.
+
 //        planeMoveByKey.setPositionX(300);
 //        planeMoveByKey.setPositionY(400);
 //        planeMoveByKey.setSpeed(4);
@@ -173,6 +176,7 @@ public class GameWindow extends Frame implements Runnable {
             planeEnemy.draw(g);
         }
 
+        BloodManager.getInstance().getBlood().draw(g);
     }
     //Game Loop
     //Vong Lap game

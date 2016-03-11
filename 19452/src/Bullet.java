@@ -9,9 +9,8 @@ import java.io.IOException;
  */
 public class Bullet extends GameObject{
 
-
     private int speed;
-
+    private Blood blood;
 
     private Bullet() {
         positionX = 0;
@@ -34,10 +33,23 @@ public class Bullet extends GameObject{
     }
 
     public void update(){
+        int x;
         this.move();
-        if (checkCollision()){
+
+        if (checkCollision()) {
             //asdasdsadsadasdasdasdasd
             //System.out.println("Trung dan roi!");
+            //don vi mau giam di 30 don vi mau
+
+            if (BloodManager.getInstance().getBlood().getWidth()>0) {
+                x = BloodManager.getInstance().getBlood().getWidth()-3;
+                BloodManager.getInstance().getBlood().setWidth(x);
+            }
+            else
+            {
+                BloodManager.getInstance().getBlood().setWidth(0);
+                BloodManager.getInstance().getBlood().setHeight(0);
+            }
 
         }
     }
@@ -58,6 +70,9 @@ public class Bullet extends GameObject{
 
     public void draw(Graphics g){
         g.drawImage(sprite,positionX,positionY,null);
+        BloodManager.getInstance().getBlood().draw(g);
+
+
     }
 
     public int getPositionX() {

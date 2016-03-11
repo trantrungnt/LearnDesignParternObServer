@@ -10,7 +10,7 @@ import java.util.Vector;
  */
 public class Plane extends GameObject implements Subject{
     private Vector<Observer> vecTai = new Vector<Observer>();
-    private Blood blood = new Blood(); //mau cua may bay
+
 
     public Plane(){
         //khong co kieu tra ve
@@ -175,13 +175,16 @@ public class Plane extends GameObject implements Subject{
         for (Bullet bul : vecBul){
             bul.update();
         }
+
+
     }
     public void draw(Graphics g){
         g.drawImage(sprite,positionX,positionY,null);
         for (Bullet bul : vecBul){
             bul.draw(g);
         }
-        blood.draw(g, 100, 10);
+
+
     }
 
     @Override

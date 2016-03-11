@@ -38,7 +38,7 @@ public class Bullet extends GameObject{
 
         if (checkCollision()) {
             //asdasdsadsadasdasdasdasd
-            //System.out.println("Trung dan roi!");
+            System.out.println("Trung dan roi!");
             //don vi mau giam di 30 don vi mau
 
             if (BloodManager.getInstance().getBlood().getWidth()>0) {

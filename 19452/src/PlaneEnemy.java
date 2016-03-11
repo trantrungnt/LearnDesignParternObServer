@@ -7,7 +7,7 @@ import java.util.Vector;
 /**
  * Created by Tdh4vnPC on 3/1/2016.
  */
-public class PlaneEnemy extends GameObject implements Observer{
+public class PlaneEnemy extends GameObject implements Observer{//day la tai cua PlaneEnemy lang nghe su kien
     private int speed;
     private int count = 0;
     public int getSpeed() {
@@ -72,6 +72,7 @@ public class PlaneEnemy extends GameObject implements Observer{
     @Override
     public void update(String msg) {
         if(msg.equals("Bo Vua An Duoc Qua")){
+            //tao tu huy
             System.out.println("Thang Player Vua An Duoc Qua Roi");
         }
     }

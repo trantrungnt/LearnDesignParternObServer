@@ -9,7 +9,7 @@ import java.util.Vector;
  * Created by hungtran on 3/1/16.
  */
 public class Plane extends GameObject implements Subject{
-    private Vector<Observer> vecTai = new Vector<Observer>();
+    private Vector<Observer> vecTai = new Vector<Observer>(); //dinh nghia cai mom
 
 
     public Plane(){
@@ -68,8 +68,7 @@ public class Plane extends GameObject implements Subject{
         vecBul.add(bul);
     }
     public int getWidth(){
-        Rectangle rec = new Rectangle();
-
+        //Rectangle rec = new Rectangle();
         return sprite.getWidth();
     }
     public int getHeight(){

@@ -37,6 +37,7 @@ public class Bullet extends GameObject{
         this.move();
         if (checkCollision()){
             //asdasdsadsadasdasdasdasd
+            System.out.println("Trung dan roi!");
         }
     }
     public boolean checkCollision(){

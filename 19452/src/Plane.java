@@ -79,6 +79,7 @@ public class Plane extends GameObject implements Subject{
     private int planeType;
     private int dam;
     private int speed;
+    //private Gift gift = new Gift();
 
     private int direction;
 
@@ -198,11 +199,16 @@ public class Plane extends GameObject implements Subject{
 
     @Override
     public void notifiObserver() {
-        if(true){
-            System.out.println("AAAAA");
+
+        //kiem tra anh cua Plane co giao voi anh cua anh qua tang Gift khong?
+        //System.out.println("AAAAA");
+
+        if(ManagerGift.getInstance().getGift().checkCollision()){
             for(Observer ob : vecTai){
                 ob.update("Bo Vua An Duoc Qua");
             }
         }
     }
+
+
 }

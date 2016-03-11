@@ -29,4 +29,20 @@ public class Gift extends GameObject {
     {
         g.drawImage(this.sprite, this.positionX, this.positionY, null);
     }
+
+    //Phuong thuc kiem tra anh Plane move by Mouse giao voi anh qua tang Gift
+    public boolean checkCollision()
+    {
+        Rectangle rectGift = new Rectangle(ManagerGift.getInstance().getGift().getPositionX(),
+                                           ManagerGift.getInstance().getGift().getPositionY(),
+                                           ManagerGift.getInstance().getGift().sprite.getWidth(),
+                                           ManagerGift.getInstance().getGift().sprite.getHeight());
+
+        Rectangle rectPlaneMouse =
+                new Rectangle(PlaneManager.getInstance().getPlaneMoveByMouse().getPositionX()
+                        ,PlaneManager.getInstance().getPlaneMoveByMouse().getPositionY()
+                        ,PlaneManager.getInstance().getPlaneMoveByMouse().getWidth()
+                        ,PlaneManager.getInstance().getPlaneMoveByMouse().getHeight());
+        return rectGift.intersects(rectPlaneMouse);
+    }
 }

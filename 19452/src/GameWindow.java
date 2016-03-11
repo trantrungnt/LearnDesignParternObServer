@@ -44,9 +44,6 @@ public class GameWindow extends Frame implements Runnable {
 
         initPlane();
 
-        //khoi tao qua tang gift
-        gift = new Gift(300, 400);
-
         //bat su kien di chuyen chuot
         //this.addMouseListener();
         //doan code de bat su kien bam phim
@@ -89,6 +86,10 @@ public class GameWindow extends Frame implements Runnable {
             @Override
             public void mouseMoved(MouseEvent e) {
                 PlaneManager.getInstance().getPlaneMoveByMouse().move(e.getX(),e.getY());
+
+                //kiem tra anh Gift co giao voi anh Plane move by Mouse khong?
+                if (ManagerGift.getInstance().getGift().checkCollision())
+                    PlaneManager.getInstance().getPlaneMoveByMouse().notifiObserver();
             }
         });
         this.addKeyListener(new KeyListener() {
@@ -100,10 +101,10 @@ public class GameWindow extends Frame implements Runnable {
             //khi dang giu phim
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_Q){
+                /*if(e.getKeyCode() == KeyEvent.VK_Q){
                     PlaneManager.getInstance().getPlaneMoveByKey().notifiObserver();
                 }
-                else if(e.getKeyCode() == KeyEvent.VK_A) {
+                else*/ if(e.getKeyCode() == KeyEvent.VK_A) {
                     PlaneManager.getInstance().getPlaneMoveByKey().setDirection(3);
                 } else if(e.getKeyCode() == KeyEvent.VK_D) {
                     PlaneManager.getInstance().getPlaneMoveByKey().setDirection(4);
@@ -131,9 +132,14 @@ public class GameWindow extends Frame implements Runnable {
         vectorPlaneEnemy.add(new PlaneEnemy(100, 150, 3));
         vectorPlaneEnemy.add(new PlaneEnemy(250, 120, 4));
         vectorPlaneEnemy.add(new PlaneEnemy(300, 90, 5));
-        for(PlaneEnemy planeEnemy:vectorPlaneEnemy){
+        /*for(PlaneEnemy planeEnemy:vectorPlaneEnemy){
             PlaneManager.getInstance().getPlaneMoveByKey().addObserver(planeEnemy);
-        }
+        }*/
+
+
+        //duyet tung may bay dich PlaneEnemy, sau do may bay Plane move by Mouse phat thong diep cho tung may bay dich PlaneEnemy
+        for (PlaneEnemy planeEnemy: vectorPlaneEnemy)
+            PlaneManager.getInstance().getPlaneMoveByMouse().addObserver(planeEnemy);
 
        // BloodManager.getInstance().getBlood();.
 
@@ -183,7 +189,7 @@ public class GameWindow extends Frame implements Runnable {
         BloodManager.getInstance().getBlood().draw(g);
 
         //ve qua tang Gift tai day
-        gift.draw(g);
+        ManagerGift.getInstance().getGift().draw(g);
     }
     //Game Loop
     //Vong Lap game

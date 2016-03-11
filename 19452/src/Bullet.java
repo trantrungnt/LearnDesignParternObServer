@@ -10,7 +10,6 @@ import java.io.IOException;
 public class Bullet extends GameObject{
 
     private int speed;
-    private Blood blood;
 
     private Bullet() {
         positionX = 0;

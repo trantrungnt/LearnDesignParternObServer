@@ -16,6 +16,7 @@ public class GameWindow extends Frame implements Runnable {
     BufferedImage background;
     Vector<PlaneEnemy> vectorPlaneEnemy;
     int direction = 0;
+    Gift gift;
 
     public GameWindow() {
         vectorPlaneEnemy = PlaneEnemyManager.getInstance().getVectorPlaneEnemy();
@@ -43,6 +44,8 @@ public class GameWindow extends Frame implements Runnable {
 
         initPlane();
 
+        //khoi tao qua tang gift
+        gift = new Gift(300, 400);
 
         //bat su kien di chuyen chuot
         //this.addMouseListener();
@@ -176,7 +179,11 @@ public class GameWindow extends Frame implements Runnable {
             planeEnemy.draw(g);
         }
 
+        //ve thanh mau Blood tai day
         BloodManager.getInstance().getBlood().draw(g);
+
+        //ve qua tang Gift tai day
+        gift.draw(g);
     }
     //Game Loop
     //Vong Lap game

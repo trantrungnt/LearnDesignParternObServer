@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 
 /**
  * Created by Tdh4vnPC on 3/1/2016.
@@ -10,6 +11,8 @@ import java.io.IOException;
 public class Bullet extends GameObject{
 
     private int speed;
+
+    private Vector<PlaneEnemy> vectorPlaneEnemy = PlaneEnemyManager.getInstance().getVectorPlaneEnemy();
 
     private Bullet() {
         positionX = 0;
@@ -49,10 +52,17 @@ public class Bullet extends GameObject{
                 BloodManager.getInstance().getBlood().setWidth(0);
                 BloodManager.getInstance().getBlood().setHeight(0);
             }
-
         }
+
+        //System.out.println(checkCollisionBulletPlaneEnemy());
+        for (int i=0; i<vectorPlaneEnemy.toArray().length; i++)
+            if (checkCollisionBulletPlaneEnemy())
+                vectorPlaneEnemy.removeElementAt(i);
+
+
     }
 
+    //kiem tra hinh chu nhat dan co giao voi hinh chu nhat may bay PlaneKey khong?
     public boolean checkCollision(){
         Rectangle rectBullet = new Rectangle(positionX,positionY,sprite.getWidth()
                                             ,sprite.getHeight());
@@ -65,6 +75,38 @@ public class Bullet extends GameObject{
     }
     //Lay toa do cua 2 may bay
     //PlaneManager.getInstance()....
+
+    ////////////////////////////////////////////////////////////////////////
+    //kiem tra hinh chu nhat dan Bullet co giao voi hinh chu nhat may bay PlaneEnemy khong?
+    public boolean checkCollisionBulletPlaneEnemy(){
+        /*for (PlaneEnemy planeEnemy : vectorPlaneEnemy) {
+            Rectangle rectPlaneEnemy =
+                    new Rectangle(planeEnemy.getPositionX()
+                            , planeEnemy.getPositionY()
+                            , planeEnemy.getSprite().getWidth()
+                            , planeEnemy.getSprite().getHeight());
+            System.out.println(rectBullet.intersects(rectPlaneEnemy));
+        }*/
+        boolean check=false;
+
+        Rectangle rectBullet = new Rectangle(positionX, positionY,
+                sprite.getWidth(), sprite.getHeight());
+
+
+
+        for (int i=0; i< vectorPlaneEnemy.toArray().length; i++)
+        {
+            Rectangle rectPlaneEnemy =
+                    new Rectangle(vectorPlaneEnemy.elementAt(i).getPositionX()
+                            , vectorPlaneEnemy.elementAt(i).getPositionY()
+                            , vectorPlaneEnemy.elementAt(i).getSprite().getWidth()
+                            , vectorPlaneEnemy.elementAt(i).getSprite().getHeight());
+            check = rectBullet.intersects(rectPlaneEnemy);
+        }
+
+        return check;
+    }
+
 
 
     public void draw(Graphics g){

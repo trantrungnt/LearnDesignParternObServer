@@ -45,4 +45,6 @@ public class Gift extends GameObject {
                         ,PlaneManager.getInstance().getPlaneMoveByMouse().getHeight());
         return rectGift.intersects(rectPlaneMouse);
     }
+
+
 }

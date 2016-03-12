@@ -200,14 +200,24 @@ public class Plane extends GameObject implements Subject{
     @Override
     public void notifiObserver() {
 
-        //kiem tra anh cua Plane co giao voi anh cua anh qua tang Gift khong?
+        //kiem tra anh cua Plane move by Mouse co giao voi anh cua anh qua tang Gift khong?
         //System.out.println("AAAAA");
-
         if(ManagerGift.getInstance().getGift().checkCollision()){
             for(Observer ob : vecTai){
                 ob.update("Toi la PlaneMoveByMouse vua an duoc qua");
             }
         }
+
+        //kiem tra anh cua PlaneMoveByMouse co giao voi anh cua hinh chu nhat Bullet khong?
+        //neu 2 hinh nay giao nhau thi gui thong diep cho may bay PlaneEnemy
+        for (Bullet bul: vecBul)
+            if (bul.checkCollisionBulletPlaneEnemy())
+            {
+                for (Observer ob : vecTai)
+                {
+                    ob.update("May bay dich bi trung dan!");
+                }
+            }
     }
 
 
